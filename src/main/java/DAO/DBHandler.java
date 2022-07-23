@@ -1,4 +1,4 @@
-/home/alireza/IdeaProjects/personal-management/src/main/javapackage DAO;
+package DAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
