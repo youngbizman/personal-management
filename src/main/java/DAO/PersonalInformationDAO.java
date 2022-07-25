@@ -17,14 +17,7 @@ public class PersonalInformationDAO {
         try {
             Statement st = conn.createStatement();
             dbHandler.openConnection();
-            st.execute("CREATE TABLE IF NOT EXISTS personel1 (\n" +
-                    "     ID int AUTO_INCREMENT PRIMARY KEY,\n" +
-                    "    Name varchar(255),\n" +
-                    "    Address varchar(255),\n" +
-                    "    Age int,\n" +
-                    "    NationalCode varchar(255),\n" +
-                    "    HasVacation boolean \n" +
-                    ");");
+
             String firstName = personalInformation.getName();
             int age = personalInformation.getAge();
             int nationalCode = personalInformation.getNationalCode();
