@@ -3,6 +3,7 @@ package DAO;
 import Entity.PersonalInformation;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.Statement;
 
 
@@ -24,15 +25,24 @@ public class PersonalInformationDAO {
                     "    NationalCode varchar(255),\n" +
                     "    HasVacation boolean \n" +
                     ");");
+            String firstName = personalInformation.getName();
+            int age = personalInformation.getAge();
+            int nationalCode = personalInformation.getNationalCode();
+            String address = personalInformation.getAddress();
+            boolean hasVacation = false;
 
-//            String sql = "insert into personel1(name,age,nationalCode,hasVacation) values('" + personalInformation.getName() + "','" + personalInformation.getAge() +
-//                    "','" + personalInformation.getNationalCode() + "',true );";
-//            st.executeUpdate(sql);
-        }
-        catch (Exception e){
+            String sql = "insert into personel1(name,age,nationalCode,hasVacation,address) values(?, ?, ?, ?, ?)";
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setString(1, firstName);
+            preparedStatement.setInt(2, age);
+            preparedStatement.setInt(3, nationalCode);
+            preparedStatement.setBoolean(4, hasVacation);
+            preparedStatement.setString(5, address);
+            preparedStatement.executeUpdate();
+        } catch (Exception e) {
             e.printStackTrace();
         }
         dbHandler.closeConnection();
     }
-    };
+};
 

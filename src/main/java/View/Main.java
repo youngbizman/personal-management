@@ -3,6 +3,7 @@ package View;
 
 import Entity.PersonalInformation;
 import Service.PersonalInformationBusiness;
+import Service.TableService;
 import Service.VacationBusiness;
 
 import java.text.ParseException;
@@ -36,6 +37,9 @@ public class Main {
     int Phone;
 
     public static void main(String[] args) throws ParseException, InterruptedException {
+        TableService tableService = new TableService();
+        tableService.createTableVacation();
+        tableService.createTablePersonnel();
 
         Scanner keyboard = new Scanner(System.in);
 
@@ -47,8 +51,6 @@ public class Main {
 
         while (true) {
             menu();
-
-
             menuOptions = MenuOptions.valueOf(keyboard.nextLine());
 
 
@@ -74,7 +76,7 @@ public class Main {
 
                 case q:
                     System.out.println("Goodbye.");
-                    break;
+                    System.exit(0);
 
                 default:
                     System.out.println("Selection out of range. Try again");

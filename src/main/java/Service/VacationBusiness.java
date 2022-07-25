@@ -1,5 +1,6 @@
 package Service;
 
+import DAO.VacationDAO;
 import Entity.Vacation;
 
 import java.text.ParseException;
@@ -132,7 +133,14 @@ public class VacationBusiness {
         if (confirm == 1) {
             System.out.println(" your vacation request has been  successfully sent");
         }
+        VacationBusiness vacationBusiness = new VacationBusiness();
+        vacationBusiness.CreateVacation(vacation);
 
+
+    }
+    public void CreateVacation(Vacation vacation)   {
+        VacationDAO vacationDAO = new VacationDAO();
+        vacationDAO.createVacation(vacation);
     }
 
 }
