@@ -4,7 +4,6 @@ import Entity.PersonalInformation;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.Statement;
 
 
 public class PersonalInformationDAO {
@@ -15,7 +14,7 @@ public class PersonalInformationDAO {
         conn = dbHandler.openConnection();
 
         try {
-            Statement st = conn.createStatement();
+       //     Statement st = conn.createStatement();
             dbHandler.openConnection();
 
             String firstName = personalInformation.getName();

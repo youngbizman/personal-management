@@ -14,8 +14,8 @@ public class TableDAO {
             dbHandler.openConnection();
             String sql = "CREATE TABLE IF NOT EXISTS Vacation (" +
                     "ID int AUTO_INCREMENT PRIMARY KEY," +
-                    "beginningDate DATE ," +
-                    "endingDate DATE ," +
+                    "beginningDate varchar (255)," +
+                    "endingDate varchar (255)," +
                     "nationalCode varchar (255)," +
                     "difference number " +
                     ");";
