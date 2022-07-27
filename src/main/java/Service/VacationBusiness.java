@@ -115,18 +115,18 @@ public class VacationBusiness {
     }
     public static void vacationRequest() throws ParseException {
         Scanner keyboard = new Scanner(System.in);
-        String name;
+        int nationalCode;
         String beginning;
         String ending;
         int confirm;
-        System.out.println("please enter your name");
-        name = keyboard.nextLine();
-        System.out.println("" + PersonalInformationBusiness.getPersonByName(name).getName() + " you have been successfully logged in");
+        System.out.println("please enter your National Code");
+        nationalCode = keyboard.nextInt();
+        System.out.println("" + PersonalInformationBusiness.getPersonByNumber(nationalCode).getName() + " you have been successfully logged in");
         System.out.println("please enter your Vacation's beginning time in yyyy-mm-dd format");
-        beginning = keyboard.nextLine();
+        beginning = keyboard.next();
         System.out.println("please enter your Vacation's ending time in yyyy-mm-dd format");
-        ending = keyboard.nextLine();
-        Vacation vacation = new Vacation(beginning, ending, PersonalInformationBusiness.getPersonByName(name));
+        ending = keyboard.next();
+        Vacation vacation = new Vacation(beginning, ending, PersonalInformationBusiness.getPersonByNumber(nationalCode));
         System.out.println("you want a " + vacation.getDifference() + " days vacation from "
                 + vacation.getBeginningDate() + " until " + vacation.getEndingDate() + "\n" + " confirm entering 1 ");
         confirm = keyboard.nextInt();

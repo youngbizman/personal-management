@@ -46,6 +46,5 @@ public class TableDAO {
         }
         dbHandler.closeConnection();
     }
-
     }
 
