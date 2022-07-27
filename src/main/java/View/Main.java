@@ -60,7 +60,7 @@ public class Main {
                     break;
 
                 case b:
-                    search();
+                    PersonalInformationBusiness.search();
                     break;
 
                 case c:
@@ -98,16 +98,7 @@ public class Main {
 
 
 
-    public static void search() throws InterruptedException {
-        int i;
-        Scanner keyboard = new Scanner(System.in);
-        System.out.println("Enter a national code without a 0 in the beginning:");
-        i = keyboard.nextInt();
-        System.out.println(PersonalInformationBusiness.getPersonByNumber(i).getName());
-        Thread.sleep(2000);
 
-
-    }
 
 
 

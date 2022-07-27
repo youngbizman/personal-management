@@ -4,6 +4,8 @@ import Entity.PersonalInformation;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Scanner;
 
 
 public class PersonalInformationDAO {
@@ -14,7 +16,6 @@ public class PersonalInformationDAO {
         conn = dbHandler.openConnection();
 
         try {
-       //     Statement st = conn.createStatement();
             dbHandler.openConnection();
 
             String firstName = personalInformation.getName();
@@ -36,5 +37,70 @@ public class PersonalInformationDAO {
         }
         dbHandler.closeConnection();
     }
+    public  void search() throws InterruptedException {
+        int i;
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println("Enter a national code without a 0 in the beginning:");
+        i = keyboard.nextInt();
+        DBHandler dbHandler = new DBHandler();
+        conn = dbHandler.openConnection();
+
+        try {
+            dbHandler.openConnection();
+
+
+            int nationalCode = i;
+
+            String sql = "SELECT name FROM PERSONEL1 WHERE nationalcode= values (?)";
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+        ;
+            preparedStatement.setInt(1, nationalCode);
+            preparedStatement.executeQuery();
+            ResultSet resultSet = preparedStatement.getResultSet();
+            while (resultSet.next()) {
+                String name = resultSet.getString("Name");
+                System.out.println(name);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        dbHandler.closeConnection();
+        Thread.sleep(2000);
+
+    }
+    public  void searchNameByNationalCode() throws InterruptedException {
+        int i;
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println("Enter a national code without a 0 in the beginning:");
+        i = keyboard.nextInt();
+        DBHandler dbHandler = new DBHandler();
+        conn = dbHandler.openConnection();
+
+        try {
+            dbHandler.openConnection();
+
+
+            int nationalCode = i;
+
+            String sql = "SELECT name FROM PERSONEL1 WHERE nationalcode= values (?)";
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            ;
+            preparedStatement.setInt(1, nationalCode);
+            preparedStatement.executeQuery();
+            ResultSet resultSet = preparedStatement.getResultSet();
+            while (resultSet.next()) {
+                String name = resultSet.getString("Name");
+                System.out.println(name);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        dbHandler.closeConnection();
+        Thread.sleep(2000);
+
+    }
+
+
+
 };
 

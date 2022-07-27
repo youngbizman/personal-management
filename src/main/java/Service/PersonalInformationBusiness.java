@@ -70,4 +70,9 @@ public class PersonalInformationBusiness {
         PersonalInformationDAO personalInformationDAO = new PersonalInformationDAO();
         personalInformationDAO.CreatePersonalInformation(personalInformation);
     }
+
+    public static void search () throws InterruptedException {
+        PersonalInformationDAO personalInformationDAO = new PersonalInformationDAO();
+        personalInformationDAO.search();
+    }
 }
