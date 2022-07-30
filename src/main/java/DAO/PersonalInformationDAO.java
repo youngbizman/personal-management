@@ -98,6 +98,27 @@ public class PersonalInformationDAO {
 
         return null;
     }
+    public ResultSet uniqueConstraints (int nationalCode) {
+        DBHandler dbHandler = new DBHandler();
+        conn = dbHandler.openConnection();
+
+        try {
+            dbHandler.openConnection();
+
+
+            String sql = "SELECT COUNT(*) FROM personel1 WHERE nationalCode =values (?);";
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1, nationalCode);
+            preparedStatement.execute();
+            ResultSet resultSet = preparedStatement.getResultSet();
+           return resultSet;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        dbHandler.closeConnection();
+        return null;
+    }
 
 
 };

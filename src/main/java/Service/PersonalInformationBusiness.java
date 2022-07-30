@@ -37,17 +37,23 @@ public class PersonalInformationBusiness {
         int Confirm;
 
         Scanner keyboard = new Scanner(System.in);
-        System.out.print("What is your name?\n");
-        Name = keyboard.nextLine();
+        while (true) {
+            System.out.print("What is your name?\n");
+            Name = keyboard.nextLine();
 
-        System.out.print("What is your full address?\n");
-        Address = keyboard.nextLine();
+            System.out.print("What is your full address?\n");
+            Address = keyboard.nextLine();
 
-        System.out.print("how old are you ?\n");
-        Age = Integer.parseInt(keyboard.nextLine());
+            System.out.print("how old are you ?\n");
+            Age = Integer.parseInt(keyboard.nextLine());
 
-        System.out.print("Type your  national code without 0 in the beginning:\n");
-        nationalCode = Integer.parseInt(keyboard.nextLine());
+            System.out.print("Type your  national code without 0 in the beginning:\n");
+            nationalCode = Integer.parseInt(keyboard.nextLine());
+            uniqueConstraints(nationalCode);
+
+
+
+
 
         PersonalInformation personalInformation = new PersonalInformation (Name, Address, Age, nationalCode);
         for (int i = 1; i <= 1; i++) {
@@ -65,6 +71,8 @@ public class PersonalInformationBusiness {
             personalInformationBusiness.CreatePersonalInformation(personalInformation);
         }
 
+        }
+
     }
     public void CreatePersonalInformation(PersonalInformation personalInformation)   {
         PersonalInformationDAO personalInformationDAO = new PersonalInformationDAO();
@@ -75,4 +83,11 @@ public class PersonalInformationBusiness {
         PersonalInformationDAO personalInformationDAO = new PersonalInformationDAO();
         personalInformationDAO.search();
     }
+    public static void uniqueConstraints(int nationalCode){
+        PersonalInformationDAO personalInformationDAO = new PersonalInformationDAO();
+       if (!personalInformationDAO.uniqueConstraints(nationalCode).equals(0)){
+           System.out.println(nationalCode + " already existed \n"  + "please enter new national  code \n" );
+       }
+    }
+
 }
